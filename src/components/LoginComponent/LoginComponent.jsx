@@ -25,6 +25,7 @@ const LoginComponent = () => {
 
   return (
     <React.Fragment>
+        <h1>Login</h1>
         <form onSubmit={formSubmitHandler}>
         <div className='mb-3'>
             <label>Email</label>
