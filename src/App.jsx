@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import './App.css';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import LoginComponent from './components/LoginComponent/LoginComponent';
+import SignupComponent from './components/SignUpComponent/SignUpComponent';
+import UserDataComponent from './components/UserDataComponent/UserDataComponent';
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+const App = () => {
+    return (
+        <Router>
+            <div className="App">
+                <nav className='navbar navbar-expand-lg navbar-light fixed-top'>
+                    <div className='container'> 
+                        <Link className='navbar-brand' to={'/login'}>
+                            Saveetha | MERN
+                        </Link>
+                        <div className='collapse navbar-collapse' id='navbarTogglerDemo2'>
+                            <ul className='navbar-nav ml-auto'>
+                                <li className='nav-item'>
+                                    <Link className='nav-link' to={'/login'}>Login</Link>
+                                </li>
+                                <li className='nav-item'>
+                                    <Link className='nav-link' to={'/signup'}>Sign Up</Link>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </nav>
+
+            
+                    <div className='auth-wrapper'>
+                        <div className='auth-inner'>
+                            <Routes>
+                                <Route exact path='/' element={<LoginComponent/>}/>
+                                <Route path='/login' element={<LoginComponent/>}/>
+                                <Route path='/signup' element={<SignupComponent/>}/>
+                                <Route path='/userdata' element={<UserDataComponent/>}/>
+                            </Routes>
+                        </div>
+                    </div>
+                
+            </div>
+        </Router>
+    );
 }
 
-export default App
+export default App;
