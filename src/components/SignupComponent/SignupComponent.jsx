@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 const SignupComponent = () => {
     const [firstName, setFirstName] = useState('')
@@ -24,7 +26,16 @@ const SignupComponent = () => {
 
     const formSubmitHandler = (event) => {
         event.preventDefault()
-        console.log(firstName, lastName, email, password)
+
+        axios
+        .post(`http://localhost:3500/api/v1/signup`,{firstName,lastName,email,password})
+        .then((response) => {
+            alert(`Successfully created account for ${response.data.firstName} ${response.data.lastName} !`)
+            window.location.href = '/'
+        })
+        .catch((error) => {
+            alert(`Status : ${error.response.status} - ${error.response.data.message}`)
+        })
     }
 
   return (
@@ -84,7 +95,7 @@ const SignupComponent = () => {
         </div>
 
         <p className='forgot-password text-right'>
-            Already registered, <a href='/login'>Sign in here?</a>
+            Already registered, <Link to='/login'>Sign in here?</Link>
         </p>
 
       </form>

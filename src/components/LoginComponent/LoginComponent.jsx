@@ -1,8 +1,6 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import {Link} from 'react-router-dom'
-
-
-
 
 const LoginComponent = () => {
 
@@ -19,8 +17,22 @@ const LoginComponent = () => {
     
     const formSubmitHandler = (event) =>{
         event.preventDefault()
-        console.log(email, password)
-      }
+        
+        axios
+        .post(`http://localhost:3500/api/v1/login`,
+          {email : email,
+          password : password})
+        .then((response) => {
+            if (response.status == 201)
+            {
+              alert(`Welcome ${response.data.firstName} ${response.data.lastName} !`)
+              window.localStorage.setItem('token',response.data.token)
+              window.location.href = '/userdata'
+            }
+        })
+        .catch((error) => {
+          alert(`Status : ${error.response.status} - ${error.response.data.message}`)
+      })}
 
 
   return (
@@ -67,7 +79,7 @@ const LoginComponent = () => {
             <button type='submit' className='btn btn-primary' >Submit</button>
           </div>
           <p className='forgot-password text-right'>
-            Forgot <a href='#'>Password?</a>
+          <a href='#'>Forgot Password?</a>
           </p>
 
           <p className='text-right'>

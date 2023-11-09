@@ -30,7 +30,6 @@ const App = () => {
                     </div>
                 </nav>
 
-            
                     <div className='auth-wrapper'>
                         <div className='auth-inner'>
                             <Routes>
