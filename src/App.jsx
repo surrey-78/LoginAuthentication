@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import LoginComponent from './components/LoginComponent/LoginComponent';
-import SignupComponent from './components/SignUpComponent/SignUpComponent';
+import SignupComponent from './components/SignUpComponent/SignupComponent';
 import UserDataComponent from './components/UserDataComponent/UserDataComponent';
 
 
