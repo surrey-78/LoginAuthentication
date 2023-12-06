@@ -13,7 +13,7 @@ const App = () => {
                 <nav className='navbar navbar-expand-lg navbar-light fixed-top'>
                     <div className='container'> 
                         <Link className='navbar-brand' to={'/login'}>
-                            Saveetha | MERN
+                            Snake Game | Pac Man
                         </Link>
                         <div className='collapse navbar-collapse' id='navbarTogglerDemo2'>
                             <ul className='navbar-nav ml-auto'>
